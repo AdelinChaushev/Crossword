@@ -156,9 +156,9 @@ class CrosswordCreator():
             if self.revise(item[0],item[1]):
                 if len(self.domains[item[0]]) == 0:
                    return False;
-                for neigbor in self.crossword.neighbors(item[0]):
+                for neigbor  in self.crossword.neighbors(item[0]):
                     if neigbor != item[1]:
-                        q.put((item[0], neigbor))
+                        q.put((neigbor, item[0]))
         return True
 
 
@@ -190,9 +190,7 @@ class CrosswordCreator():
         for (x,y) in self.crossword.overlaps.keys():
           if self.crossword.overlaps[x,y] != None:
             if x in assignment.keys() and y in assignment.keys():
-             word1 = assignment[x]
-             word2 = assignment[y]
-             overlap = self.crossword.overlaps[x,y]
+
              if assignment[x][self.crossword.overlaps[x,y][0]] != assignment[y][self.crossword.overlaps[x,y][1]]:
                  return False
 
